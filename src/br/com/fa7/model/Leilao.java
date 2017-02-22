@@ -90,7 +90,7 @@ public class Leilao {
 	}
 
 	public boolean encerra() {
-		return true;
+		return false;
 	}
 	
 }

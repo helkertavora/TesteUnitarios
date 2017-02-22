@@ -1,13 +1,13 @@
 package br.com.fa7.testes;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Calendar;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import br.com.fa7.dao.LeilaoDao;
 import br.com.fa7.model.CriadorDeLeilao;
 import br.com.fa7.model.EncerradorDeLeilao;
 import br.com.fa7.model.Lance;
@@ -75,14 +75,14 @@ public class LeilaoTest {
 	@Test
 	public void deveEncerrarLeiloesQueComecaramUmaSemanaAtras() {
 		Calendar antiga = Calendar.getInstance();
-		antiga.set(2016, 2, 16);
+		antiga.set(2016, 2, 22);
 		
 		Leilao leilao1 = new CriadorDeLeilao().para("TV de plasma").naData(antiga).constroi();
 		Leilao leilao2 = new CriadorDeLeilao().para("Geladeira").naData(antiga).constroi();
-		// dao falso aqui!
-		//LeilaoDaoFalso daoFalso = new LeilaoDaoFalso();
-		//daoFalso.salva(leilao1);
-		//daoFalso.salva(leilao2);
+		
+		LeilaoDao daoFalso = new LeilaoDao();
+		daoFalso.salva(leilao1);
+		daoFalso.salva(leilao2);
 		EncerradorDeLeilao encerrador = new EncerradorDeLeilao();
 		encerrador.encerra();
 		assertEquals(2, encerrador.getTotalEncerrados());

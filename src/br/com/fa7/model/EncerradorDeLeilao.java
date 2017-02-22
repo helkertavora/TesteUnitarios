@@ -8,6 +8,7 @@ import br.com.fa7.dao.LeilaoDao;
 public class EncerradorDeLeilao {
 	
 	private int total = 0;
+	
 
 	public void encerra() {
 			LeilaoDao dao = new LeilaoDao();
@@ -39,4 +40,5 @@ public class EncerradorDeLeilao {
 	public int getTotalEncerrados() {
 		return total;
 	}
+	
 }
